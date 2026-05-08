@@ -16,87 +16,85 @@ export default function DashboardPage() {
   const recentDeposits = deposits.slice(0, 5);
 
   return (
-    <div className="space-y-8">
-      {/* ── Hero ── */}
-      <section className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#F5F1E8] via-white to-[#EDF7F0] p-8 sm:p-12">
-        {/* Decorative leaf shapes */}
-        <div className="absolute -right-4 -top-4 text-[120px] opacity-[0.06] select-none">🌿</div>
-        <div className="absolute -bottom-4 -left-4 text-[80px] opacity-[0.06] select-none">🌱</div>
-
+    <div className="space-y-10">
+      {/* ═══ HERO ═══ */}
+      <section className="hero-nature">
         <div className="relative z-10 max-w-3xl space-y-5">
           <span className="eco-pill">
             <Sprout size={14} /> Aksi hijau dimulai dari pemilahan sampah
           </span>
-          <h1 className="impact-number !text-[#1A1F14]" style={{ fontFamily: "var(--font-amatic)", fontSize: "clamp(42px, 6vw, 72px)", lineHeight: 1 }}>
+          <h1
+            className="impact-number text-[#E8F0E6]"
+            style={{ fontSize: "clamp(48px, 7vw, 80px)", lineHeight: 0.95 }}
+          >
             Sampah punya nilai,{" "}
-            <span style={{ color: "#166534" }}>bumi punya masa depan</span>
+            <span style={{ color: "#22C55E" }}>bumi punya masa depan</span>
           </h1>
-          <p className="max-w-xl text-[#5C6B4E] leading-relaxed">
+          <p className="max-w-xl text-[#7D9A7E] leading-relaxed text-base">
             Pantau poin Anda, limbah yang didaur ulang, dan dampak lingkungan yang sudah tercapai.
           </p>
 
-          {/* Quick CTA */}
-          <div className="flex flex-wrap gap-3 pt-1">
+          <div className="flex flex-wrap gap-3 pt-2">
             <Link href="/setor" className="btn-primary">
               Setor Sampah <ArrowRight size={16} />
             </Link>
-            <Link href="/jemput" className="inline-flex items-center gap-2 rounded-full border border-[#DDE5D5] bg-white px-6 py-3 text-sm font-semibold text-[#166534] transition-all hover:bg-[#F5F1E8] hover:shadow-sm">
+            <Link href="/jemput" className="btn-outline">
               Jadwalkan Jemput
             </Link>
           </div>
         </div>
       </section>
 
-      {/* ── Impact Stats ── */}
+      {/* ═══ IMPACT STATS ═══ */}
       <section className="grid gap-4 sm:grid-cols-3">
         <div className="nature-card text-center">
           <Droplets size={28} className="mx-auto mb-3 text-[#7DD3FC]" />
-          <p className="impact-number !text-[#166534]" style={{ fontSize: "48px" }}>
+          <p className="impact-number text-[#22C55E]" style={{ fontSize: "52px" }}>
             {userPoints.toLocaleString('id-ID')}
           </p>
-          <p className="text-sm font-semibold text-[#1A1F14]">Total Poin</p>
-          <p className="mt-1 text-xs text-[#9BA88A]">Siap ditukar reward</p>
+          <p className="text-sm font-bold text-[#E8F0E6]">Total Poin</p>
+          <p className="mt-1 text-xs text-[#7D9A7E]">Siap ditukar reward</p>
         </div>
         <div className="nature-card text-center">
           <Recycle size={28} className="mx-auto mb-3 text-[#22C55E]" />
-          <p className="impact-number !text-[#166534]" style={{ fontSize: "48px" }}>
+          <p className="impact-number text-[#22C55E]" style={{ fontSize: "52px" }}>
             {totalKg.toFixed(1)} kg
           </p>
-          <p className="text-sm font-semibold text-[#1A1F14]">Sampah Didaur Ulang</p>
-          <p className="mt-1 text-xs text-[#9BA88A]">{recycledBags} transaksi</p>
+          <p className="text-sm font-bold text-[#E8F0E6]">Sampah Didaur Ulang</p>
+          <p className="mt-1 text-xs text-[#7D9A7E]">{recycledBags} transaksi</p>
         </div>
         <div className="nature-card text-center">
           <TreePine size={28} className="mx-auto mb-3 text-[#166534]" />
-          <p className="impact-number !text-[#166534]" style={{ fontSize: "48px" }}>
+          <p className="impact-number text-[#22C55E]" style={{ fontSize: "52px" }}>
             {savedTrees}
           </p>
-          <p className="text-sm font-semibold text-[#1A1F14]">Pohon Terselamatkan</p>
-          <p className="mt-1 text-xs text-[#9BA88A]">{co2SavedKg} kg CO₂ dihindari</p>
+          <p className="text-sm font-bold text-[#E8F0E6]">Pohon Terselamatkan</p>
+          <p className="mt-1 text-xs text-[#7D9A7E]">{co2SavedKg} kg CO₂ dihindari</p>
         </div>
       </section>
 
-      {/* ── Recent Deposits + Impact ── */}
+      {/* ═══ RECENT + WHY ═══ */}
       <section className="grid gap-4 sm:grid-cols-2">
         {/* Recent deposits */}
         <div className="nature-card">
-          <h3 className="mb-4 text-lg font-bold text-[#1A1F14]" style={{ fontFamily: "var(--font-amatic)", fontSize: "1.5rem" }}>
+          <h3 className="mb-5 text-3xl font-bold text-[#E8F0E6]" style={{ fontFamily: "var(--font-amatic)" }}>
             Setoran Terbaru
           </h3>
           <div className="space-y-2">
             {recentDeposits.length === 0 ? (
-              <p className="py-8 text-center text-sm text-[#9BA88A]">Belum ada setoran</p>
+              <p className="py-10 text-center text-sm text-[#7D9A7E]">Belum ada setoran</p>
             ) : (
               recentDeposits.map((d) => (
                 <div key={d.id} className="deposit-item">
                   <div>
-                    <span className="text-sm font-semibold text-[#1A1F14]">
+                    <span className="text-sm font-semibold text-[#E8F0E6]">
                       {wasteEmoji[d.type]} {wasteLabels[d.type]}
                     </span>
-                    <p className="text-xs text-[#9BA88A]">
+                    <p className="text-xs text-[#7D9A7E]">
                       {d.weight_kg.toFixed(1)} kg · {formatDateTime(d.date)}
                     </p>
                   </div>
-                  <span className="rounded-full bg-[#22C55E]/10 px-3 py-1 text-xs font-bold text-[#166534]">
+                  <span className="rounded-full bg-[#22C55E]/10 px-3 py-1 text-xs font-bold text-[#22C55E]">
                     +{d.points} pts
                   </span>
                 </div>
@@ -107,7 +105,7 @@ export default function DashboardPage() {
 
         {/* Why it matters */}
         <div className="nature-card">
-          <h3 className="mb-4 text-lg font-bold text-[#1A1F14]" style={{ fontFamily: "var(--font-amatic)", fontSize: "1.5rem" }}>
+          <h3 className="mb-5 text-3xl font-bold text-[#E8F0E6]" style={{ fontFamily: "var(--font-amatic)" }}>
             Kenapa Ini Penting
           </h3>
           <div className="space-y-3">
@@ -118,13 +116,13 @@ export default function DashboardPage() {
             ].map((item) => {
               const Icon = item.icon;
               return (
-                <div key={item.title} className="flex items-start gap-3 rounded-xl bg-[#F5F1E8] p-4">
-                  <div className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-[#22C55E]/10 text-[#166534]">
-                    <Icon size={16} />
+                <div key={item.title} className="info-card">
+                  <div className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-[#22C55E]/10 text-[#22C55E]">
+                    <Icon size={18} />
                   </div>
                   <div>
-                    <p className="text-sm font-semibold text-[#1A1F14]">{item.title}</p>
-                    <p className="text-xs text-[#9BA88A]">{item.desc}</p>
+                    <p className="text-sm font-bold text-[#E8F0E6]">{item.title}</p>
+                    <p className="text-xs text-[#7D9A7E]">{item.desc}</p>
                   </div>
                 </div>
               );
@@ -133,18 +131,18 @@ export default function DashboardPage() {
         </div>
       </section>
 
-      {/* ── Footer CTA ── */}
-      <section className="rounded-3xl bg-[#166534] p-8 text-center text-white sm:p-12">
-        <Wind size={32} className="mx-auto mb-4 text-[#4ADE80]" />
-        <p className="text-2xl font-bold" style={{ fontFamily: "var(--font-amatic)", fontSize: "2.4rem" }}>
+      {/* ═══ BOTTOM CTA ═══ */}
+      <section className="cta-section">
+        <Wind size={36} className="mx-auto mb-4 text-[#4ADE80]" />
+        <p className="impact-number text-white" style={{ fontSize: "clamp(36px, 5vw, 56px)" }}>
           Setiap kilogram berarti
         </p>
-        <p className="mx-auto mt-2 max-w-md text-sm text-green-100">
+        <p className="mx-auto mt-3 max-w-md text-sm text-green-200">
           Bergabunglah dengan ribuan warga Jakarta yang sudah memilah sampah dari rumah.
         </p>
         <Link
           href="/setor"
-          className="mt-6 inline-flex items-center gap-2 rounded-full bg-white px-8 py-3 text-sm font-bold text-[#166534] transition-all hover:bg-green-50 hover:shadow-lg"
+          className="mt-6 inline-flex items-center gap-2 rounded-full bg-white px-8 py-3.5 text-sm font-bold text-[#166534] transition-all hover:bg-green-50 hover:shadow-xl"
         >
           Mulai Setor Sekarang <ArrowRight size={16} />
         </Link>
