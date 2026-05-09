@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import type { ReactNode } from 'react';
 import { Amatic_SC, Cabin } from 'next/font/google';
-import { Recycle, Sprout } from 'lucide-react';
+import { Recycle } from 'lucide-react';
 import './globals.css';
 
 const amatic = Amatic_SC({
@@ -16,16 +16,9 @@ const cabin = Cabin({
 });
 
 export const metadata: Metadata = {
-  title: 'Trash Treasure — Waste Bank Digital',
+  title: 'Trash Treasure',
   description: 'Sampah punya nilai. Setor, kumpulkan poin, lindungi bumi.',
 };
-
-const navItems = [
-  { href: '/', label: 'Dashboard' },
-  { href: '/setor', label: 'Setor' },
-  { href: '/jemput', label: 'Jemput' },
-  { href: '/edukasi', label: 'Edukasi' },
-];
 
 export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
   return (
@@ -46,7 +39,12 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
                 </div>
               </Link>
               <nav className="flex flex-wrap gap-1">
-                {navItems.map((item) => (
+                {[
+                  { href: '/', label: 'Dashboard' },
+                  { href: '/setor', label: 'Setor' },
+                  { href: '/jemput', label: 'Jemput' },
+                  { href: '/edukasi', label: 'Edukasi' },
+                ].map((item) => (
                   <Link
                     key={item.href}
                     href={item.href}
